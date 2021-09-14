@@ -11,6 +11,7 @@ class BotController extends Controller
         $data = $request->all();
         $id            = $data["entry"][0]["messaging"][0]["sender"]["id"];
         $senderMessage = $data["entry"][0]["messaging"][0]['message'];
+        dd($senderMessage);
         if (!empty($senderMessage)) {
             $this->sendTextMessage($id, "Hi buddy");
         }
