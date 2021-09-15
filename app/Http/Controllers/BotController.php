@@ -97,8 +97,7 @@ class BotController extends Controller
 
     public function callApiFaceBook($messageData)
     {
-        $test = 'EAAFnjZA8tvMwBAK13ZAv0X6lrk9LetOhM14wwgogcawO4Ss9ULrTR6t03I9zZApsd8t1yx6aR8ZCqvgsZCygIQidleZCl9klyXsusaZCR1fNEkOSoAHzJBybRx8D1IGuJ5BwLudqlXnDWi5bClrgmPhHcZBU0malnnCqgVSZCzxCDpUTSEGvrcmde6rsuhZBvNUI8ZD';
-        $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=' . $test);
+        $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=' . env("PAGE_ACCESS_TOKEN"));
         curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $messageData);
