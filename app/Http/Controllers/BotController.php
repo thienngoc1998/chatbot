@@ -11,8 +11,10 @@ class BotController extends Controller
     public function bot(Request $request)
     {
         $data = $request->all();
-        $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
-        if (!empty($data["entry"][0]["messaging"][0])) {
+        if (isset($data["entry"][0]["messaging"][0]) && !empty($data["entry"][0]["messaging"][0])) {
+            $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
+            Log::info('test1', $data["entry"][0]["messaging"][0]);
+
             if (isset($data["entry"][0]["messaging"][0]['postback'])) {
                 Log::info('test1', [1]);
                 $this->handlePostback($id, $data["entry"][0]["messaging"][0]['postback']);
