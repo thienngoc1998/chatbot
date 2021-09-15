@@ -13,14 +13,14 @@ class BotController extends Controller
         $data = $request->all();
         $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
         if (!empty($data["entry"][0]["messaging"][0])) {
-            Log::info('data', $data["entry"][0]["messaging"][0]);
-            die(0);
             if (isset($data["entry"][0]["messaging"][0]['postback'])) {
+                Log::info('test1', [1]);
                 $this->handlePostback($id, $data["entry"][0]["messaging"][0]['postback']);
             } else if (isset($data["entry"][0]["messaging"][0]['message']['text'])) {
                 Log::info('adada', [111]);
                 $this->sendTextMessage($id, "Hi buddy");
             } else if (isset($data["entry"][0]["messaging"][0]['message']['attachments'])) {
+                Log::info('test1', [3]);
                 $this->callApiWithTemplate($id, $data["entry"][0]["messaging"][0]['message']);
             }
         }
