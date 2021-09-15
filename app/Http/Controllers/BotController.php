@@ -76,12 +76,18 @@ class BotController extends Controller
             ],
         ];
         Log::info('data', $messageData);
-        $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=' . env("PAGE_ACCESS_TOKEN"));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($messageData));
-        curl_exec($ch);
-        curl_close($ch);
+        try {
+            $ch = curl_init('https://graph.facebook.com/v2.6/me/messages?access_token=' . env("PAGE_ACCESS_TOKEN"));
+            curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($messageData));
+            curl_exec($ch);
+            curl_close($ch);
+            Log::info('data', [$recipientId, $messageText]);
+        } catch (\Exception $e) {
+            Log::info('data', [$e->getMessage()]);
+        }
+
 //        $messageData = json_encode($messageData);
 //        $this->callApiFaceBook($messageData);
     }
