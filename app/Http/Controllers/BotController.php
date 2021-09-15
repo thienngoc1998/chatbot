@@ -75,6 +75,7 @@ class BotController extends Controller
                 "text" => $messageText,
             ],
         ];
+        Log::info('data', $messageData);
         $messageData = json_encode($messageData);
         $this->callApiFaceBook($messageData);
     }
