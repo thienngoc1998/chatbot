@@ -10,10 +10,11 @@ class BotController extends Controller
     public function bot(Request $request)
     {
         $data = $request->all();
-        Log::info('data', $data);
         $id            = $data["entry"][0]["messaging"][0]["sender"]["id"];
         $senderMessage = $data["entry"][0]["messaging"][0]['message'];
-        dd($senderMessage);
+//        dd($senderMessage);
+        Log::info('data', $id);
+
         if (!empty($senderMessage)) {
             $this->sendTextMessage($id, "Hi buddy");
         }
