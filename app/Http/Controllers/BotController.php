@@ -12,7 +12,7 @@ class BotController extends Controller
     {
         $data = $request->all();
         $id            = $data["entry"][0]["messaging"][0]["sender"]["id"];
-        $senderMessage = $data["entry"][0]["messaging"][0]['message'];
+        $senderMessage = isset($data["entry"][0]["messaging"][0]['message']) ?$data["entry"][0]["messaging"][0]['message'] : null;
 //        dd($senderMessage);
         Log::info('data', [$id]);
 
