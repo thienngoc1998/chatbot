@@ -16,6 +16,7 @@ class BotController extends Controller
             if (isset($data["entry"][0]["messaging"][0]['postback'])) {
                 $this->handlePostback($id, $data["entry"][0]["messaging"][0]['postback']);
             } else if (isset($data["entry"][0]["messaging"][0]['message']['text'])) {
+                Log::info('adada', [111]);
                 $this->sendTextMessage($id, "Hi buddy");
             } else if (isset($data["entry"][0]["messaging"][0]['message']['attachments'])) {
                 $this->callApiWithTemplate($id, $data["entry"][0]["messaging"][0]['message']);
