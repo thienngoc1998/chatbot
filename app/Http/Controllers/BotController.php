@@ -13,7 +13,7 @@ class BotController extends Controller
         $id            = $data["entry"][0]["messaging"][0]["sender"]["id"];
         $senderMessage = $data["entry"][0]["messaging"][0]['message'];
 //        dd($senderMessage);
-        Log::info('data', $id);
+        Log::info('data', [$id]);
 
         if (!empty($senderMessage)) {
             $this->sendTextMessage($id, "Hi buddy");
