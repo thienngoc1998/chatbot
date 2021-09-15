@@ -23,7 +23,7 @@ class BotController extends Controller
 
     private function callApiWithTemplate($recipientId, $entry)
     {
-        $attachment_url = $entry[0]['attachments'][0]['payload']['url'];
+        $attachment_url = $entry['attachments'][0]['payload']['url'];
         $messageData = [
             "recipient" => [
                 "id" => $recipientId,
