@@ -17,11 +17,12 @@ class VerifyBot
      */
     public function handle(Request $request, Closure $next)
     {
-        Log::info('test', $request->all());
         if ($request->input("hub_mode") === "subscribe"
             && $request->input("hub_verify_token") === env("MESSENGER_VERIFY_TOKEN")) {
             return response($request->input("hub_challenge"), 200);
         }
+        Log::info('test', [123]);
+
         return $next($request);
     }
 }

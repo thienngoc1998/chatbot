@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class BotController extends Controller
 {
     public function bot(Request $request)
     {
         $data = $request->all();
+        Log::info('data', $data);
         $id            = $data["entry"][0]["messaging"][0]["sender"]["id"];
         $senderMessage = $data["entry"][0]["messaging"][0]['message'];
         dd($senderMessage);
