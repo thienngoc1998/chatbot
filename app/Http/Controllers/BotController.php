@@ -26,7 +26,6 @@ class BotController extends Controller
                 $this->callApiWithTemplate($id, $data["entry"][0]["messaging"][0]['message']);
             }
         }
-
     }
 
     private function callApiWithTemplate($recipientId, $entry)
