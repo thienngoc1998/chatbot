@@ -12,6 +12,7 @@ class BotController extends Controller
     {
         $data = $request->all();
         Log::info('data', $data);
+
         die(0);
         $id = $data["entry"][0]["messaging"][0]["sender"]['id'];
         if (isset($data["entry"][0]["messaging"][0]['postback'])) {
