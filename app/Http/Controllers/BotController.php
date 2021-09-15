@@ -61,7 +61,7 @@ class BotController extends Controller
                 ]
             ],
         ];
-        $this->callApiFaceBook(json_encode($messageData));
+        $this->callApiFaceBook($messageData);
     }
 
 
