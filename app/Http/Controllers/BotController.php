@@ -11,17 +11,17 @@ class BotController extends Controller
     public function bot(Request $request)
     {
         $data = $request->all();
-        Log::info('data', $data);
-
-        die(0);
-        $id = $data["entry"][0]["messaging"][0]["sender"]['id'];
-        if (isset($data["entry"][0]["messaging"][0]['postback'])) {
-            $this->handlePostback($id, $data["entry"][0]["messaging"][0]['postback']);
-        } else if (isset($data["entry"][0]["messaging"][0]['message']['text'])) {
-            $this->sendTextMessage($id, "Hi buddy");
-        } else if (isset($data["entry"][0]["messaging"][0]['message']['attachments'])) {
-            $this->callApiWithTemplate($id, $data["entry"][0]["messaging"][0]['message']);
+        $id = $data["entry"][0]["messaging"][0]["sender"]["id"];
+        if (!empty($data["entry"][0]["messaging"][0])) {
+            if (isset($data["entry"][0]["messaging"][0]['postback'])) {
+                $this->handlePostback($id, $data["entry"][0]["messaging"][0]['postback']);
+            } else if (isset($data["entry"][0]["messaging"][0]['message']['text'])) {
+                $this->sendTextMessage($id, "Hi buddy");
+            } else if (isset($data["entry"][0]["messaging"][0]['message']['attachments'])) {
+                $this->callApiWithTemplate($id, $data["entry"][0]["messaging"][0]['message']);
+            }
         }
+
     }
 
     private function callApiWithTemplate($recipientId, $entry)
