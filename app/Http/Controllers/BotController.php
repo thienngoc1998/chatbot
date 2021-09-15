@@ -20,7 +20,7 @@ class BotController extends Controller
                 $this->handlePostback($id, $data["entry"][0]["messaging"][0]['postback']);
             } else if (isset($data["entry"][0]["messaging"][0]['message']['text'])) {
                 Log::info('adada', [111]);
-                $this->sendTextMessage($id, "Hi buddy");
+                $this->sendTextMessage($id, "Chào bạn tôi là bot của trang .\n Mọi yêu cầu xin vui lòng liên hệ : tuyen.nguyen@kiaisoft.com ");
             } else if (isset($data["entry"][0]["messaging"][0]['message']['attachments'])) {
                 Log::info('test1', [3]);
                 $this->callApiWithTemplate($id, $data["entry"][0]["messaging"][0]['message']);
